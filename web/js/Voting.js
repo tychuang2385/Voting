@@ -5,12 +5,12 @@
 let id = getQuestionnaireId(),
   questionIdx = -1,
   cookieId,
-  question = "<%= q %>",
+  question = "<%- q %>",
   options =
     '<% for(let i = 0; i < o.length; i++){ %> \
                <button type="button" class="option btn" \
                aid="<%= o[i].aid %>" data-datac="<%= o[i].description %>" onclick=voteAnswer(this)>\
-               <%= o[i].description %> \
+               <%- o[i].description %> \
                <span class="badge badge-light" style="display:none"></span>\
                </button> <% } %>',
   isStart = false,
