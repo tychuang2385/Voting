@@ -8,7 +8,14 @@ let config = require("./config"),
   httpRedirectServer = config.https
     ? require("http").createServer(redirectApp)
     : null,
-  socketIo = require("socket.io")(server),
+  socketIo = require("socket.io")(server, {
+    cors: {
+        origin: "http://localhost:8100",
+        methods: ["GET", "POST"],
+        transports: ['websocket', 'polling'],
+        credentials: true
+    },
+    allowEIO3: true}),
   bodyParser = require("body-parser"),
   cookieParser = require("cookie-parser"),
   expressSession = require("express-session"),
